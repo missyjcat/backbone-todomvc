@@ -44,12 +44,13 @@ var TodoView = Backbone.View.extend({
 	// this.$el.html( nameOfTemplate( this.model.toJSON()); 
 	// this.$el.html() is getting the JQuery object (the todo DIV we put in the view in the beginning) and calling .html() to inject HTML into it
 	// nameOfTemplate accepts one parameter -- the model, and the template we have in the index.html accepts the model's attribtues, title and completed
-	todoTpl: _.template( $('#item_template').html()),
+	todoTpl: _.template($('#item_template').html()),
 
 
 	// BACKBONE CONTROLLER: This is really the Backbone controller-- events and what to do to respond to those events
 	// Controller role performed by the template, not the view??
 	// Mixed into both model and view
+	// All event callbacks use "this" to refer to the current View object
 	events: {
 		'dblclick label': 'edit',
 		'keypress .edit': 'updateOnEnter',
@@ -111,3 +112,10 @@ var TodoView = Backbone.View.extend({
 // So basically the below line puts that specific TODO into the view we just defined above
 // And sticks that view into the DIV we have in index.html WITHIN the li (defined as tagname) 
 var todoView = new TodoView({model: myTodo});
+
+// Other Backbone methods:
+//
+// Model.set and Model.get (sets and gets values. can take objects too, set triggers change too.) 
+// .attributes represents internal hash with state of Model, and setting "attributes" to a modified object
+// 
+// Better to use Model.set() with an additional {silent: true} argument instead of overwriting .attributes
