@@ -23,7 +23,7 @@ app.LibraryView = Backbone.View.extend({
 		// 
 		// So for each item in the collection, it calls renderBook(
 		// item) ...
-		this.collection.each(function(item)) {
+		this.collection.each(function(item) {
 			this.renderBook(item);
 		}, this );
 	},
